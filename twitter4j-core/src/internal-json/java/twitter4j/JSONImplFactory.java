@@ -153,6 +153,19 @@ class JSONImplFactory implements ObjectFactory {
     }
 
     @Override
+    public QueryUniversalResult createQueryUniversalResult(HttpResponse res, Query query) throws TwitterException {
+        try {
+            return new QueryUniversalResultJSONImpl(res, conf);
+        } catch (TwitterException te) {
+            if (404 == te.getStatusCode()) {
+                return new QueryUniversalResultJSONImpl(query);
+            } else {
+                throw te;
+            }
+        }
+    }
+
+    @Override
     public IDs createIDs(HttpResponse res) throws TwitterException {
         return new IDsJSONImpl(res, conf);
     }

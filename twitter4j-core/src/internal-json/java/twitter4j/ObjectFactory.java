@@ -49,6 +49,8 @@ interface ObjectFactory extends java.io.Serializable {
 
     QueryResult createQueryResult(HttpResponse res, Query query) throws TwitterException;
 
+    QueryUniversalResult createQueryUniversalResult(HttpResponse res, Query query) throws TwitterException;
+
     IDs createIDs(HttpResponse res) throws TwitterException;
 
     PagableResponseList<User> createPagableUserList(HttpResponse res) throws TwitterException;

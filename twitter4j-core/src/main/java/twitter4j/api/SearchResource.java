@@ -18,6 +18,7 @@ package twitter4j.api;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;
+import twitter4j.QueryUniversalResult;
 import twitter4j.TwitterException;
 
 /**
@@ -36,4 +37,13 @@ public interface SearchResource {
      * @since Twitter4J 1.1.7
      */
     QueryResult search(Query query) throws TwitterException;
+    /**
+     * Returns tweets that match a specified query.
+     *
+     * @param query - the search condition
+     * @return the result
+     * @throws TwitterException when Twitter service or network is unavailable
+     * @since Twitter4J 1.1.7
+     */
+    QueryUniversalResult searchUniversal(Query query) throws TwitterException;
 }

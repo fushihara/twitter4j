@@ -260,6 +260,17 @@ class TwitterImpl extends TwitterBaseImpl implements Twitter {
         }
     }
 
+    @Override
+    public QueryUniversalResult searchUniversal(Query query) throws TwitterException {
+        if (query.nextPage() != null) {
+            return factory.createQueryUniversalResult(get(conf.getRestBaseURL()
+                    + "search/universal.json" + query.nextPage()), query);
+        } else {
+            return factory.createQueryUniversalResult(get(conf.getRestBaseURL()
+                    + "search/universal.json", query.asHttpParameterArray()), query);
+        }
+    }
+
     /* Direct Messages Resources */
 
     @Override
