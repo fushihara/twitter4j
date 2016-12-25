@@ -66,6 +66,7 @@ import static twitter4j.ParseUtil.getDate;
     private String[] withheldInCountries = null;
     private Status quotedStatus;
     private long quotedStatusId = -1L;
+    private VoteJSONImpl vote;
 
     /*package*/StatusJSONImpl(HttpResponse res, Configuration conf) throws TwitterException {
         super(res);
@@ -188,6 +189,9 @@ import static twitter4j.ParseUtil.getDate;
                 for (int i = 0 ; i < length; i ++) {
                     withheldInCountries[i] = withheld_in_countries.getString(i);
                 }
+            }
+            if(VoteJSONImpl.hasVote(json)){
+                this.vote = new VoteJSONImpl(json);
             }
         } catch (JSONException jsone) {
             throw new TwitterException(jsone);
@@ -455,6 +459,9 @@ import static twitter4j.ParseUtil.getDate;
     public String getLang() {
         return lang;
     }
+
+    @Override
+    public VoteJSONImpl getVote(){return this.vote;}
 
     /*package*/
     static ResponseList<Status> createStatusList(HttpResponse res, Configuration conf) throws TwitterException {

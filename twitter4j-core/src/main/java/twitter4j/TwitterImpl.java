@@ -69,6 +69,8 @@ class TwitterImpl extends TwitterBaseImpl implements Twitter {
                     implicitParamsStr += "&";
                 }
                 implicitParamsStr += "tweet_mode=extended";
+                implicitParamsStr += "&include_cards=true";
+                implicitParamsStr += "&cards_platform=iPhone-13";
             }
 
             List<HttpParameter> params = new ArrayList<HttpParameter>(3);
@@ -86,6 +88,8 @@ class TwitterImpl extends TwitterBaseImpl implements Twitter {
             }
             if (conf.isTweetModeExtended()) {
                 params.add(new HttpParameter("tweet_mode", "extended"));
+                params.add(new HttpParameter("include_cards", "true"));
+                params.add(new HttpParameter("cards_platform", "iPhone-13"));
             }
             HttpParameter[] implicitParams = params.toArray(new HttpParameter[params.size()]);
 
