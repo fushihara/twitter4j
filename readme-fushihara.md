@@ -19,6 +19,10 @@ private void searchUniversal(Twitter twitter) throws TwitterException {
 }
 ```
 
+## 投票apiに対応(受信のみ)
+
+[2016/12/26のコミット](https://github.com/fushihara/twitter4j/commit/871e23d9f4fd67494e8cad296956e88a5fea453f)で追加
+公式クライントでしか許されていなかったアンケート情報の受信に対応。StatusにgetVote()メソッドが増えました
 
 # Windows+Powershellでjarファイルをコンパイルする方法
 
