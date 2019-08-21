@@ -15,12 +15,13 @@ public class VoteJSONImpl extends TwitterResponseImpl implements java.io.Seriali
 
     public static boolean hasVote(JSONObject json) {
         try {
-            if(!json.has("card")){
+            if(!json.getJSONObject("card").getJSONObject("binding_values").getJSONObject("api").getString("string_value").equals("capi://passthrough/1")){
                 return false;
             }
-            if(!json.getJSONObject("card").has("binding_values")){
+            if(!json.getJSONObject("card").getJSONObject("binding_values").getJSONObject("card_url").getString("string_value").equals("https://twitter.com")){
                 return false;
             }
+
         } catch (JSONException e) {
             return false;
         }
